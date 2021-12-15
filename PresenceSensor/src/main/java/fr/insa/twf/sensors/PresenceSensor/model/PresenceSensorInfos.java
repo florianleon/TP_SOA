@@ -6,7 +6,7 @@ public class PresenceSensorInfos {
 	private String batiment;
 	private String room;
 	private int position;
-	private double value;
+	private boolean value;
 	private int state;
 	private int battery;
 	
@@ -50,11 +50,11 @@ public class PresenceSensorInfos {
 		this.position = position;
 	}
 
-	public double getValue() {
+	public boolean getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(boolean value) {
 		this.value = value;
 	}
 
