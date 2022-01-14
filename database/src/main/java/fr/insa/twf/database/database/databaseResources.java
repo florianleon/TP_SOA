@@ -14,7 +14,6 @@ public class databaseResources {
 	
 	protected Connection c = null;
 	private Statement stm = null;
-	private PreparedStatement pstm = null;
 	private ResultSet rs = null;
 	@SuppressWarnings("unused")
 	private int rowsModified = 0;
@@ -28,7 +27,6 @@ public class databaseResources {
 			System.out.println("[" + this.getClass().toString() + "] Connection OK");
 
 		} catch (SQLException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -37,7 +35,6 @@ public class databaseResources {
 		try {
 			c.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -53,7 +50,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -72,7 +68,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -91,7 +86,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -110,7 +104,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -129,7 +122,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -148,7 +140,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -167,7 +158,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -186,7 +176,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -205,7 +194,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();
@@ -224,7 +212,6 @@ public class databaseResources {
 			stm.close();
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.closeConnection();

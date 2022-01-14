@@ -1,7 +1,6 @@
 package fr.insa.twf.clock.Clock.resources;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import org.springframework.web.bind.annotation.GetMapping;
