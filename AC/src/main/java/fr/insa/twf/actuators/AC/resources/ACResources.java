@@ -16,7 +16,7 @@ import fr.insa.twf.actuators.AC.model.ACInfos;
 @RequestMapping("/AC")
 public class ACResources {
 
-	private ArrayList<ACInfos> ACList = null;
+	private ArrayList<ACInfos> ACList = new ArrayList<ACInfos>();
 	
 	private ACInfos getAC(int id) {
 		ACInfos item = null;
@@ -98,15 +98,24 @@ public class ACResources {
 		return status;
 	}
 	
-	@PostMapping("AC/new/{id}/{batiment}/{room}/{position}")
+	@PostMapping("new/{id}/{batiment}/{room}/{position}")
 	public boolean addAC(@PathVariable("id") int id, @PathVariable("batiment") String batiment, @PathVariable("room") String room, @PathVariable("position") int position) {
 		ACInfos AC = new ACInfos(id, batiment, room, position);
 		ACList.add(AC);
 		return true;
 	}
 	
-	@DeleteMapping("AC/delete/{id}")
-	public boolean addHeat(@PathVariable("id") int id) {
+	@GetMapping("list")
+	public ArrayList<Integer> getACList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (ACInfos ac: ACList) {
+			list.add(ac.getId());
+		}
+		return list;
+	}
+	
+	@DeleteMapping("delete/{id}")
+	public boolean deleteAC(@PathVariable("id") int id) {
 		boolean status = false;
 		for (int i = 0; i < ACList.size(); i++) {
 			ACInfos item = ACList.get(i);

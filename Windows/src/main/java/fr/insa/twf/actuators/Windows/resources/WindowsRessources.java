@@ -17,7 +17,7 @@ import fr.insa.twf.actuators.Windows.model.WindowsInfos;
 @RequestMapping("/windows")
 public class WindowsRessources {
 	
-	private ArrayList<WindowsInfos> windowsList = null;
+	private ArrayList<WindowsInfos> windowsList = new ArrayList<WindowsInfos>();
 	
 	private WindowsInfos getWindow(int id) {
 		WindowsInfos item = null;
@@ -28,6 +28,15 @@ public class WindowsRessources {
 			}
 		}
 		return item;
+	}
+	
+	@GetMapping("list")
+	public ArrayList<Integer> getDoorsList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (WindowsInfos item: windowsList) {
+			list.add(item.getId());
+		}
+		return list;
 	}
 	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")

@@ -17,7 +17,7 @@ import fr.insa.twf.sensors.CO2HumiditySensor.model.CO2HumiditySensorInfos;
 public class CO2HumiditySensorResources {
 
 	
-	private ArrayList<CO2HumiditySensorInfos> sensorsList = null;
+	private ArrayList<CO2HumiditySensorInfos> sensorsList = new ArrayList<CO2HumiditySensorInfos>();
 	
 	private CO2HumiditySensorInfos getSensor(int id) {
 		CO2HumiditySensorInfos item = null;
@@ -30,15 +30,24 @@ public class CO2HumiditySensorResources {
 		return item;
 	}
 	
+	@GetMapping("list")
+	public ArrayList<Integer> getList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (CO2HumiditySensorInfos item: sensorsList) {
+			list.add(item.getId());
+		}
+		return list;
+	}
+	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")
-	public boolean addWindows(@PathVariable("id") int id, @PathVariable("batiment") String batiment, @PathVariable("room") String room, @PathVariable("position") int position) {
+	public boolean addSensor(@PathVariable("id") int id, @PathVariable("batiment") String batiment, @PathVariable("room") String room, @PathVariable("position") int position) {
 		CO2HumiditySensorInfos sensor = new CO2HumiditySensorInfos(id, batiment, room, position);
 		sensorsList.add(sensor);
 		return true;
 	}
 	
 	@DeleteMapping("delete/{id}")
-	public boolean deleteWindows(@PathVariable("id") int id) {
+	public boolean deleteSensor(@PathVariable("id") int id) {
 		boolean status = false;
 		for (int i = 0; i < sensorsList.size(); i++) {
 			CO2HumiditySensorInfos item = sensorsList.get(i);

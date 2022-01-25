@@ -15,7 +15,7 @@ import fr.insa.twf.sensors.PresenceSensor.model.PresenceSensorInfos;
 @RequestMapping("/presence")
 public class PresenceSensorResources {
 
-	private ArrayList<PresenceSensorInfos> sensorsList = null;
+	private ArrayList<PresenceSensorInfos> sensorsList = new ArrayList<PresenceSensorInfos>();
 	
 	private PresenceSensorInfos getSensor(int id) {
 		PresenceSensorInfos item = null;
@@ -26,6 +26,15 @@ public class PresenceSensorResources {
 			}
 		}
 		return item;
+	}
+	
+	@GetMapping("list")
+	public ArrayList<Integer> getList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (PresenceSensorInfos item: sensorsList) {
+			list.add(item.getId());
+		}
+		return list;
 	}
 	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")

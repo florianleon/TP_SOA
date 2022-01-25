@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.insa.twf.sensors.LightSensor.model.LightSensorInfos;
 
 @RestController
-@RequestMapping("/light")
+@RequestMapping("/lightSensor")
 public class LightSensorResources {
 	
-	private ArrayList<LightSensorInfos> sensorsList = null;
+	private ArrayList<LightSensorInfos> sensorsList = new ArrayList<LightSensorInfos>();
 	
 	private LightSensorInfos getSensor(int id) {
 		LightSensorInfos item = null;
@@ -26,6 +26,15 @@ public class LightSensorResources {
 			}
 		}
 		return item;
+	}
+	
+	@GetMapping("list")
+	public ArrayList<Integer> getList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (LightSensorInfos item: sensorsList) {
+			list.add(item.getId());
+		}
+		return list;
 	}
 	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")
@@ -70,8 +79,8 @@ public class LightSensorResources {
 	}
 	
 	@GetMapping("/{id}")
-	public double getValue(@PathVariable("id") int id) {
-		double level = 0.0;
+	public int getValue(@PathVariable("id") int id) {
+		int level = 0;
 		LightSensorInfos sensor = getSensor(id);
 		if (sensor != null) {
 			level = sensor.getValue();

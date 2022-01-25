@@ -1,23 +1,22 @@
-package fr.insa.twf.sensors.LightSensor.model;
+package fr.insa.twf.actuators.Lights.model;
 
-public class LightSensorInfos {
-
+public class LightsInfos {
+	
 	private int id;
 	private String batiment;
 	private String room;
 	private int position;
-	private int value; //de 0 à 100% de luminosité
+	private boolean lightOn; 
 	private int state;
-	private int battery;
 	
-	public LightSensorInfos(int id, String batiment, String room, int position) {
+	public LightsInfos(int id, String batiment, String room, int position) {
 		this.id = id;
 		this.batiment = batiment;
 		this.room = room;
 		this.position = position;
-		this.battery = 100;
+		this.lightOn = false;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -50,14 +49,6 @@ public class LightSensorInfos {
 		this.position = position;
 	}
 
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
-	}
-
 	public int getState() {
 		return state;
 	}
@@ -66,13 +57,15 @@ public class LightSensorInfos {
 		this.state = state;
 	}
 
-	public int getBattery() {
-		return battery;
+	public boolean isLightOn() {
+		return lightOn;
 	}
 
-	public void setBattery(int battery) {
-		this.battery = battery;
+	public void setLightOn(boolean lightOn) {
+		this.lightOn = lightOn;
 	}
+
 	
 	
+
 }

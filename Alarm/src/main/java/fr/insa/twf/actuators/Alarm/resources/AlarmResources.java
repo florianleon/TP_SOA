@@ -15,7 +15,7 @@ import fr.insa.twf.actuators.Alarm.model.AlarmInfos;
 @RequestMapping("/alarm")
 public class AlarmResources {
 	
-	private ArrayList<AlarmInfos> AlarmList = null;
+	private ArrayList<AlarmInfos> AlarmList = new ArrayList<AlarmInfos>();
 		
 	private AlarmInfos getAlarm(int id) {
 		AlarmInfos item = null;
@@ -28,8 +28,17 @@ public class AlarmResources {
 		return item;
 	}
 	
+	@GetMapping("list")
+	public ArrayList<Integer> getACList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (AlarmInfos AlarmList: AlarmList) {
+			list.add(AlarmList.getId());
+		}
+		return list;
+	}
+	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")
-	public boolean add1larm(@PathVariable("id") int id, @PathVariable("batiment") String batiment, @PathVariable("room") String room, @PathVariable("position") int position) {
+	public boolean addAlarm(@PathVariable("id") int id, @PathVariable("batiment") String batiment, @PathVariable("room") String room, @PathVariable("position") int position) {
 		AlarmInfos alarm = new AlarmInfos(id, batiment, room, position);
 		AlarmList.add(alarm);
 		return true;

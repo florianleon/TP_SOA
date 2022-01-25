@@ -25,7 +25,7 @@ public class TemperatureSensorResources {
 		return bd.doubleValue();
 	}
 	
-private ArrayList<TemperatureSensorInfos> sensorsList = null;
+private ArrayList<TemperatureSensorInfos> sensorsList = new ArrayList<TemperatureSensorInfos>();
 	
 	private TemperatureSensorInfos getSensor(int id) {
 		TemperatureSensorInfos item = null;
@@ -36,6 +36,15 @@ private ArrayList<TemperatureSensorInfos> sensorsList = null;
 			}
 		}
 		return item;
+	}
+	
+	@GetMapping("list")
+	public ArrayList<Integer> getList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (TemperatureSensorInfos item: sensorsList) {
+			list.add(item.getId());
+		}
+		return list;
 	}
 	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")

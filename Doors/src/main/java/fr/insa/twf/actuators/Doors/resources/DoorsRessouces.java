@@ -15,17 +15,26 @@ import fr.insa.twf.actuators.Doors.model.DoorsInfos;
 @RestController
 @RequestMapping("/doors")
 public class DoorsRessouces {
-	private ArrayList<DoorsInfos> doorsList = null;
+	private ArrayList<DoorsInfos> doorsList = new ArrayList<DoorsInfos>();
 	
 	private DoorsInfos getDoor(int id) {
 		DoorsInfos item = null;
-		for (DoorsInfos alarm: doorsList) {
-			int Alarmid = alarm.getId();
-			if (Alarmid == id) {
-				item = alarm;
+		for (DoorsInfos doors: doorsList) {
+			int doorsId = doors.getId();
+			if (doorsId == id) {
+				item = doors;
 			}
 		}
 		return item;
+	}
+	
+	@GetMapping("list")
+	public ArrayList<Integer> getDoorsList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (DoorsInfos item: doorsList) {
+			list.add(item.getId());
+		}
+		return list;
 	}
 	
 	@PostMapping("new/{id}/{batiment}/{room}/{position}")
