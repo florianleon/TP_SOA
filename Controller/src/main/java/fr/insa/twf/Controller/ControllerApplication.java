@@ -61,10 +61,8 @@ public class ControllerApplication {
 		List<Integer> value = Arrays.asList(id);
 		if (map.isEmpty() == false) {
 			if (map.containsKey(key)) {
-				List<Integer> oldValue = map.get(key);
-				List<Integer> newValue = oldValue;
-				newValue.add(id);
-				map.replace(key, oldValue, newValue);
+				List<Integer> newValue = map.get(key);
+				map.put(key, newValue);
 			} else {
 				map.put(key, value);
 			}	
@@ -124,8 +122,9 @@ public class ControllerApplication {
 		this.addItem2Map(acMap, batiment, room, id);
 	}
 	
-	private void setAC(String device, int id, double temp) {
+	private void setAC(String device, int id, int temp) {
 		String URL = null;
+		
 		if (device.equals("heat")) {
 			URL = acURL + "heat/ON/" + id + "/" + temp;
 		} else if (device.equals("clim")) {
@@ -133,7 +132,7 @@ public class ControllerApplication {
 		} else {
 			System.out.println("Order not executed wrong device");
 		}
-		this.rest().postForObject(URL, null, boolean.class);
+		this.rest().postForObject(URL, null, String.class);
 	}
 
 	private void setACOFF(String device, int id) {
@@ -145,7 +144,7 @@ public class ControllerApplication {
 		} else {
 			System.out.println("Order not executed wrong device");
 		}
-		this.rest().postForObject(URL, null, boolean.class);
+		this.rest().postForObject(URL, null, String.class);
 	}
 	
 	private void turnACOff(String device, int id) {
@@ -157,7 +156,7 @@ public class ControllerApplication {
 		} else {
 			System.out.println("Order not executed wrong device");
 		}
-		this.rest().postForObject(URL, null, boolean.class);
+		this.rest().postForObject(URL, null, String.class);
 	}
 	
 	private List<Boolean> getACStatus(int id) {
@@ -440,26 +439,36 @@ public class ControllerApplication {
 		this.createLights(1, "GEI", "213", 1);
 		this.createLights(2, "GEI", "213", 2);
 		this.createLights(3, "GEI", "213", 3);
+		System.out.println("\n");
 		this.fetchACList();
+		System.out.println("\n");
 		this.fetchAlarmList();
+		System.out.println("\n");
 		this.fetchDoorsList();
+		System.out.println("\n");
 		this.fetchWindowsList();
+		System.out.println("\n");
 		this.fetchLightsList();
+		System.out.println("\n");
 	}
 	
 	private void initSensors() {
 		this.createCo2HumSensor(0, "GEI", "213", 0);
 		this.createLightSensor(0, "GEI", "213", 0);
-		this.createLightSensor(1, "GEI", "213", 1);
 		this.createPresenceSensor(0, "GEI", "213", 0);
 		this.createPresenceSensor(1, "GEI", "213", 1);
 		this.createPresenceSensor(2, "GEI", "213", 2);
 		this.createPresenceSensor(3, "GEI", "213", 3);
 		this.createTempSensor(0, "GEI", "213", 0);
+		System.out.println("\n");
 		this.fetchCo2HumList();
+		System.out.println("\n");
 		this.fetchLightSensorList();
+		System.out.println("\n");
 		this.fetchPresenceList();
+		System.out.println("\n");
 		this.fetchTempList();
+		System.out.println("\n");
 
 	}
 
@@ -470,6 +479,14 @@ public class ControllerApplication {
 		cont.initActuators();
 		cont.initSensors();
 		boolean open = false;
+		System.out.println("Started...");
+		try {
+			Thread.sleep(15000); //A modifier plus tard
+			System.out.println("Ready...");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		while (true) {
 			for(Map.Entry<String, String> entry : cont.getRooms().entrySet()) {
@@ -529,44 +546,43 @@ public class ControllerApplication {
 				if (acMap.containsKey(key)) {
 					List<Integer> tempSensors = tempMap.get(key);
 					//On fait la moyenne des capteurs de temperature
-					for (Integer id : tempSensors) {
-						temp += cont.getTempValue(id);
-					}
-					temp /= tempSensors.size();
+					//for (Integer id : tempSensors) {
+					//	temp += cont.getTempValue(id);
+					//}
+					//temp /= tempSensors.size();
+					temp = cont.getTempValue(0);
+					
 					if (tempMap.containsKey(key)) {
+						List<Integer> acs = acMap.get(key);
 						if (presence) {
-							List<Integer> acs = acMap.get(key);
 							for (Integer id : acs) {
 								List<Boolean> acStatus = cont.getACStatus(id);
 								climOn = climOn || acStatus.get(0);
 								heatOn = heatOn || acStatus.get(0);
 							}
-							
 							if (temp < 18.0) {
-								heatOn = true;
-								climOn = false;
+								for(Integer id : acs) {
+									cont.setAC("heat", id, 20);
+								}
 							} else if (temp >= 18.0 && temp <= 20.0) {
-								climOn = false;
-							} else if (temp > 20.0 && temp <= 26.0) {
-								heatOn = false;
-							} else if (temp > 26.0) {
-								heatOn = false;
-								climOn = true;
-							}
-							
-							for (Integer id : acs) {
-								if (climOn || heatOn == false) {
-									cont.setAC("clim", id, 20.0);
-									cont.setACOFF("heat", id);
-								} else if (heatOn || climOn == false) {
-									cont.setAC("heat", id, 20.0);
-									cont.setACOFF("clim", id);
-								} else {
-									cont.setACOFF("heat", id);
+								for(Integer id : acs) {
 									cont.setACOFF("clim", id);
 								}
+							} else if (temp > 20.0 && temp <= 26.0) {
+								for(Integer id : acs) {
+									cont.setACOFF("heat", id);
+								}
+							} else if (temp > 26.0) {
+								for(Integer id : acs) {
+									cont.setAC("clim", id, 20);
+								}
 							}
-						} 
+						} else {
+							for(Integer id : acs) {
+								cont.setACOFF("heat", id);
+								cont.setACOFF("clim", id);
+							}
+						}
 					}
 				}
 				
@@ -587,36 +603,35 @@ public class ControllerApplication {
 						}
 						co2Value /= co2Sensors.size();
 						
+						List<Integer> windows = windowsMap.get(key);
+						List<Integer> doors = doorsMap.get(key);
+						List<Integer> alarms = alarmMap.get(key);
 						//On verifie si ou doit aerer ou pas
 						//boolean open = false;
 						if (co2Value < 2000.0) {
-							open = false;
+							for (Integer id : windows) {
+								cont.switchWindowsState(id, false);
+							}
+							for (Integer id : doors) {
+								cont.switchDoorState(id, false);
+							}
+							for (Integer id : alarms) {
+								cont.switchAlarmState(id, false);
+							}
 						} else if (co2Value >= 2000.0 && co2Value <= 2500.0) {
 							;
 						} else if (co2Value > 2500.0) {
-							open = true;
-						}
-						
-						//Si la clim ou le chauffage est allumé on ouvre rien mais on allume l'alarme
-						//On va considerer que l'actionneur AC fait aussi une filtration d'air lorsqu'il est allumé en mode clim ou heat
-						if (climOn || heatOn) {
-							//alarm
-							List<Integer> alarms = alarmMap.get(key);
-							for (Integer id : alarms) {
-								cont.switchAlarmState(id, open);
-							}
-						} else {
-							//On ouvre les fenetres et les portes tant qu'a faire
-							List<Integer> windows = windowsMap.get(key);
-							List<Integer> doors = doorsMap.get(key);
 							for (Integer id : windows) {
-								cont.switchWindowsState(id, open);
+								cont.switchWindowsState(id, true);
 							}
 							for (Integer id : doors) {
-								cont.switchDoorState(id, open);
+								cont.switchDoorState(id, true);
+							}
+							for (Integer id : alarms) {
+								cont.switchAlarmState(id, false);
 							}
 						}
-						
+
 					} else {
 						//on ferme la porte et les fenetres
 						List<Integer> windows = windowsMap.get(key);
@@ -631,11 +646,30 @@ public class ControllerApplication {
 						for (Integer id : alarms) {
 							cont.switchAlarmState(id, false);
 						}
+						List<Integer> co2Sensors = co2HumMap.get(key);
+						//On fait la moyenne des capteurs de luminosité
+						for (Integer id : co2Sensors) {
+							co2Value += cont.getCO2Value(id);
+						}
+						co2Value /= co2Sensors.size();
+						if (co2Value < 2000.0) {
+							for (Integer id : alarms) {
+								cont.switchAlarmState(id, false);
+							}
+						} else if (co2Value >= 2000.0 && co2Value <= 2500.0) {
+							;
+						} else if (co2Value > 2500.0) {
+							for (Integer id : alarms) {
+								cont.switchAlarmState(id, true);
+							}
+						}
+
 					}
 				}
 			}
 			try {
-				Thread.sleep(1000); //A modifier plus tard
+				System.out.println("Sleep...");
+				Thread.sleep(5000); //A modifier plus tard
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -30,51 +30,51 @@ public class ACResources {
 	}
 	
 	@PostMapping("clim/ON/{id}/{temp}")
-	public boolean switchClimOn(@PathVariable("temp") Double temp, @PathVariable("id") int id) {
-		boolean status = false;
+	public String switchClimOn(@PathVariable("id") int id, @PathVariable("temp") int temp) {
+		String res = "Error";
 		ACInfos clim = getAC(id);
 		if (clim != null) {
-			clim.setHeatOn(false);
 			clim.setClimOn(true);
+			clim.setHeatOn(false);
 			clim.setTargetedTemperature(temp);
-			status = true;
+			res = "Clim " + id + " set to " + temp;
 		}
-		return status;
+		return res;
 	}
 	
 	@PostMapping("clim/OFF/{id}")
-	public boolean switchClimOff(@PathVariable("id") int id) {
-		boolean status = false;
+	public String switchClimOff(@PathVariable("id") int id) {
+		String res = "Error";
 		ACInfos clim = getAC(id);
 		if (clim != null) {
 			clim.setClimOn(false);
-			status = true;
+			res = "Clim " + id + " OFF.";
 		}
-		return status;
+		return res;
 	}
 	
 	@PostMapping("heat/ON/{id}/{temp}")
-	public boolean switchRadiateurOn(@PathVariable("temp") Double temp, @PathVariable("id") int id) {
-		boolean status = false;
+	public String switchRadiateurOn(@PathVariable("id") int id, @PathVariable("temp") int temp) {
+		String res = "Error";
+		ACInfos heat = getAC(id);
+		if (heat != null) {
+			heat.setHeatOn(true);
+			heat.setClimOn(false);
+			heat.setTargetedTemperature(temp);
+			res = "Heat " + id + " set to " + temp;
+		}
+		return res;
+	}
+	
+	@PostMapping("heat/OFF/{id}")
+	public String switchRadiateurOff(@PathVariable("id") int id) {
+		String res = "Error";
 		ACInfos heat = getAC(id);
 		if (heat != null) {
 			heat.setHeatOn(false);
-			heat.setClimOn(true);
-			heat.setTargetedTemperature(temp);
-			status = true;
+			res = "Heat " + id + " OFF.";
 		}
-		return status;
-	}
-	
-	@PostMapping("heat/{id}")
-	public boolean switchRadiateurOff(@PathVariable("id") int id) {
-		boolean status = false;
-		ACInfos heat = getAC(id);
-		if (heat != null) {
-			heat.setClimOn(false);
-			status = true;
-		}
-		return status;
+		return res;
 	}
 	
 	@GetMapping("clim/{id}")
@@ -93,7 +93,7 @@ public class ACResources {
 		boolean status = false;
 		ACInfos heat = getAC(id);
 		if (heat != null) {
-			status = heat.isClimOn();
+			status = heat.isHeatOn();
 		}
 		return status;
 	}

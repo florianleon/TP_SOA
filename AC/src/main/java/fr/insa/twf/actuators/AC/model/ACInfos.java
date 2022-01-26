@@ -6,7 +6,7 @@ public class ACInfos {
 	private String batiment;
 	private String room;
 	private int position;
-	private double targetedTemperature;
+	private int targetedTemperature;
 	private boolean climOn; 
 	private boolean heatOn; 
 	private int state;
@@ -56,7 +56,7 @@ public class ACInfos {
 		return targetedTemperature;
 	}
 
-	public void setTargetedTemperature(double targetedTemperature) {
+	public void setTargetedTemperature(int targetedTemperature) {
 		this.targetedTemperature = targetedTemperature;
 	}
 
@@ -66,7 +66,6 @@ public class ACInfos {
 
 	public void setClimOn(boolean climOn) {
 		this.climOn = climOn;
-		this.setHeatOn(false);
 	}
 
 	public boolean isHeatOn() {
@@ -75,7 +74,6 @@ public class ACInfos {
 
 	public void setHeatOn(boolean heatOn) {
 		this.heatOn = heatOn;
-		this.setClimOn(false);
 	}
 
 	public int getState() {

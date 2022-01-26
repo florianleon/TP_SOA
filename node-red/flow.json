@@ -1,0 +1,1233 @@
+[
+    {
+        "id": "ec45a7eb14d46d0c",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "43611444a931746e",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Clim",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8101/AC/clim/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 650,
+        "y": 80,
+        "wires": [
+            [
+                "6f56434c5c0e676e"
+            ]
+        ]
+    },
+    {
+        "id": "f44bf36fe3540b7c",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Heat",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8101/AC/heat/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 650,
+        "y": 120,
+        "wires": [
+            [
+                "21bad00cba4f7edf"
+            ]
+        ]
+    },
+    {
+        "id": "525567160bc5d2ce",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Alarme",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8102/alarm/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "923adaf09b522091"
+            ]
+        ]
+    },
+    {
+        "id": "36ccd0ddbf116b66",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Doors",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8103/doors/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 650,
+        "y": 200,
+        "wires": [
+            [
+                "4b72b34a82ba6f6b"
+            ]
+        ]
+    },
+    {
+        "id": "33f968c16278f1b7",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Windows",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8104/windows/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "69b15677a9fece04"
+            ]
+        ]
+    },
+    {
+        "id": "03dfdc8aa839b461",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Lights",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8105/lights/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 650,
+        "y": 280,
+        "wires": [
+            [
+                "2f02f9d470608497"
+            ]
+        ]
+    },
+    {
+        "id": "eefb36131863d67a",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "CO2",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8201/co2Humidity/co2/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 650,
+        "y": 340,
+        "wires": [
+            [
+                "d5f3273ed0e3f63b"
+            ]
+        ]
+    },
+    {
+        "id": "4be01cbddf9674dd",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "LightSensors",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8202/lightSensor/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 670,
+        "y": 380,
+        "wires": [
+            [
+                "6965ccd0d4a2860f"
+            ]
+        ]
+    },
+    {
+        "id": "ce42451e7f2ad5b1",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "GetPresence",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8203/presence/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 670,
+        "y": 420,
+        "wires": [
+            [
+                "f5db42e818bc90a9"
+            ]
+        ]
+    },
+    {
+        "id": "01b7f250eb958140",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "GetTemperature",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8204/temperature/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 680,
+        "y": 460,
+        "wires": [
+            [
+                "33438a513c370564"
+            ]
+        ]
+    },
+    {
+        "id": "f91d882b3610cfa6",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostTemperature29",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8204/temperature/0/29",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 700,
+        "y": 780,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "86daee4568f1e871",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Temp 29",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 660,
+        "wires": [
+            [
+                "f91d882b3610cfa6"
+            ]
+        ]
+    },
+    {
+        "id": "e31caefcdbdeac2f",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostTemperature19",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8204/temperature/0/19",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 700,
+        "y": 820,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "c34b98c09c87e571",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostPresenceTrue",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8203/presence/0/true",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 690,
+        "y": 700,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "7898514b5360c60a",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostPresenceFalse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8203/presence/0/false",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 690,
+        "y": 740,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "ea9f586700fef3ae",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "LightSensors30",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8202/lightSensor/0/30",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 680,
+        "y": 620,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "68b1f510f66cef2a",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "LightSensors90",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8202/lightSensor/0/90",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 680,
+        "y": 660,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "a40ee28a51c4846d",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostCO21000",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8201/co2Humidity/co2/0/1000",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 680,
+        "y": 540,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "74c2fdcb2fb34127",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostCO23000",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8201/co2Humidity/co2/0/3000",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 680,
+        "y": 580,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "7a12bdfc12a963a2",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Temp 19",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 700,
+        "wires": [
+            [
+                "e31caefcdbdeac2f"
+            ]
+        ]
+    },
+    {
+        "id": "6bf9547331e0ee16",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Pres false",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 620,
+        "wires": [
+            [
+                "7898514b5360c60a"
+            ]
+        ]
+    },
+    {
+        "id": "6ff4453c6d85e7b6",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Pres true",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 580,
+        "wires": [
+            [
+                "c34b98c09c87e571"
+            ]
+        ]
+    },
+    {
+        "id": "5997ee9570263201",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Light 90",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 540,
+        "wires": [
+            [
+                "68b1f510f66cef2a"
+            ]
+        ]
+    },
+    {
+        "id": "2222e0f811daf449",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Light 30",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 500,
+        "wires": [
+            [
+                "ea9f586700fef3ae"
+            ]
+        ]
+    },
+    {
+        "id": "3fa7a6470ebc6777",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "CO2 3000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 460,
+        "wires": [
+            [
+                "74c2fdcb2fb34127"
+            ]
+        ]
+    },
+    {
+        "id": "b17fc17474e64941",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": " CO2 1000",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 420,
+        "wires": [
+            [
+                "a40ee28a51c4846d"
+            ]
+        ]
+    },
+    {
+        "id": "d8f356cb391fb6ac",
+        "type": "debug",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "780d76a636e309e9",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Actuators Status",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "43611444a931746e",
+                "f44bf36fe3540b7c",
+                "525567160bc5d2ce",
+                "36ccd0ddbf116b66",
+                "33f968c16278f1b7",
+                "03dfdc8aa839b461"
+            ]
+        ]
+    },
+    {
+        "id": "8145c159aba42ec9",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Sensors Values",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "eefb36131863d67a",
+                "4be01cbddf9674dd",
+                "ce42451e7f2ad5b1",
+                "01b7f250eb958140"
+            ]
+        ]
+    },
+    {
+        "id": "6f56434c5c0e676e",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Clim : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 80,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "33438a513c370564",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Temperature Value : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 460,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "21bad00cba4f7edf",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Heat : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 120,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "923adaf09b522091",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Alarm : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 160,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "4b72b34a82ba6f6b",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Doors : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 200,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "69b15677a9fece04",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Windows : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 240,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "2f02f9d470608497",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Lights : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 280,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "d5f3273ed0e3f63b",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Co2 Value : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 340,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "6965ccd0d4a2860f",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Light Value : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 380,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "f5db42e818bc90a9",
+        "type": "function",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "func": "msg.payload = \"Presence Value : \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 420,
+        "wires": [
+            [
+                "d8f356cb391fb6ac"
+            ]
+        ]
+    },
+    {
+        "id": "3886b8f49b9fb8b7",
+        "type": "debug",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "215f731a6ce154b5",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Test",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8101/AC/heat/ON/0/20",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 650,
+        "y": 40,
+        "wires": [
+            [
+                "f835183237710cf6"
+            ]
+        ]
+    },
+    {
+        "id": "2a97a3dde12a9f69",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Test Request",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 40,
+        "wires": [
+            [
+                "215f731a6ce154b5"
+            ]
+        ]
+    },
+    {
+        "id": "f835183237710cf6",
+        "type": "debug",
+        "z": "ec45a7eb14d46d0c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "0e00c1dd9caeef88",
+        "type": "http request",
+        "z": "ec45a7eb14d46d0c",
+        "name": "PostTemperature10",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8204/temperature/0/10",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 700,
+        "y": 860,
+        "wires": [
+            [
+                "3886b8f49b9fb8b7"
+            ]
+        ]
+    },
+    {
+        "id": "6daa99624eedde84",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Temp 10",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "0e00c1dd9caeef88"
+            ]
+        ]
+    },
+    {
+        "id": "7ee53a1ad31883b1",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "Reset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 500,
+        "wires": [
+            [
+                "a40ee28a51c4846d",
+                "68b1f510f66cef2a",
+                "7898514b5360c60a",
+                "e31caefcdbdeac2f"
+            ]
+        ]
+    },
+    {
+        "id": "db8d952aec2eb7e5",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 560,
+        "wires": [
+            [
+                "7898514b5360c60a",
+                "74c2fdcb2fb34127"
+            ]
+        ]
+    },
+    {
+        "id": "c91dbe3da7f12007",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 620,
+        "wires": [
+            [
+                "c34b98c09c87e571",
+                "74c2fdcb2fb34127"
+            ]
+        ]
+    },
+    {
+        "id": "e74d64f54344f9c6",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S3",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 680,
+        "wires": [
+            [
+                "0e00c1dd9caeef88",
+                "c34b98c09c87e571"
+            ]
+        ]
+    },
+    {
+        "id": "4b9ee50bd52b75ef",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S4",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 740,
+        "wires": [
+            [
+                "f91d882b3610cfa6",
+                "c34b98c09c87e571"
+            ]
+        ]
+    },
+    {
+        "id": "3073b4cd801d58f8",
+        "type": "inject",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S5",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 800,
+        "wires": [
+            [
+                "c34b98c09c87e571",
+                "ea9f586700fef3ae"
+            ]
+        ]
+    },
+    {
+        "id": "8d63801eefd2fd36",
+        "type": "comment",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S1",
+        "info": "CO2 --> 3000\nPresence --> false\nSould trigger alarm",
+        "x": 110,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2a5e9b62e12e1cbe",
+        "type": "comment",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S2",
+        "info": "CO2 --> 3000\nPresence --> true\nSould open doors and windows",
+        "x": 110,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "09d3591802b12396",
+        "type": "comment",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S3",
+        "info": "Temperature --> 10°\nPresence --> true\nSould open turn heat on",
+        "x": 110,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "10894c8ff58b98bc",
+        "type": "comment",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S4",
+        "info": "Temperature --> 29°\nPresence --> true\nSould open turn clim on",
+        "x": 110,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6ca6f87577b5b840",
+        "type": "comment",
+        "z": "ec45a7eb14d46d0c",
+        "name": "S5",
+        "info": "light Sensor --> 30%\nPresence --> true\nSould open turn lights on",
+        "x": 110,
+        "y": 260,
+        "wires": []
+    }
+]
