@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>fr.insa.twf.actuators</groupId>
 	<artifactId>AC</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AC</name>
 	<description>MS for AC actuators</description>
